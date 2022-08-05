@@ -1,7 +1,15 @@
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from '../Form/Form.module.css';
+import { filterContact } from '../../Redux/Contacts/contacts-slice';
 
-export const Filter = ({ handlerFilter }) => {
+export const Filter = () => {
+  const name = useSelector(state => state.contacts.filter);
+  const dispatch = useDispatch();
+
+  const handlerInput = evt => {
+    dispatch(filterContact(evt.target.value));
+  };
+
   return (
     <form className={styles.form}>
       <label className={styles.label}>
@@ -10,13 +18,10 @@ export const Filter = ({ handlerFilter }) => {
           className={styles.input}
           type="text"
           name="name"
-          onChange={handlerFilter}
+          value={name}
+          onChange={handlerInput}
         />
       </label>
     </form>
   );
-};
-
-Filter.propTypes = {
-  handlerFilter: PropTypes.func.isRequired,
 };
