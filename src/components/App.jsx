@@ -3,9 +3,6 @@ import { useState } from 'react';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import Form from './Form/Form';
-import { store } from 'Redux/store';
-
-console.log(store.getState());
 
 export const App = () => {
   const [filter, setFilter] = useState('');

@@ -24,7 +24,7 @@ export default function Form({ addUserData }) {
   const handleSubmit = evt => {
     evt.preventDefault();
     const id = nanoid();
-    const user = { name, number, id };
+    const user = { name, number, id: nanoid() };
     addUserData(user);
     setName('');
     setNumber('');
